@@ -16,7 +16,7 @@
                         <img src="{{ $author->user->avatar }}" alt="Foto Profil" class="rounded-circle mb-3"
                             style="width: 100px; height: 100px; object-fit: cover;">
                     @else
-                        <img src="{{ asset('storage/profiles/' . $author->user->avatar) }}" alt="Foto Profil"
+                        <img src="{{ asset('storage/public/profiles/' . $author->user->avatar) }}" alt="Foto Profil"
                             class="rounded-circle mb-3" style="width: 100px; height: 100px; object-fit: cover;">
                     @endif
                 @else

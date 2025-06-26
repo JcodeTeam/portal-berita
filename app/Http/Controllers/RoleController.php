@@ -56,6 +56,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         //
+        return view('roles.edit-modal');
     }
 
     /**
@@ -63,16 +64,19 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
-        //
+        if (in_array($role->id, [1, 2, 3])) {
+            return redirect()->back()->with('error', 'Role ini tidak dapat diubah.');
+        }
+
         $request->validate([
-            'name' => 'required|string|max:255|unique:roles,name,' . $role->id,
+            'name' => 'required|string|unique:roles,name,' . $role->id,
         ]);
 
         $role->update([
             'name' => $request->name,
         ]);
 
-        return redirect()->route('roles.index')->with('success', 'Role updated successfully.');
+        return redirect()->route('roles.index')->with('success', 'Peran berhasil diperbarui.');
     }
 
     /**
@@ -81,7 +85,7 @@ class RoleController extends Controller
     public function destroy(Role $role)
     {
         //
-        Role::where('id',$role->id)->delete();
+        Role::where('id', $role->id)->delete();
 
         return redirect()->route('roles.index')->with('success', 'Role deleted successfully.');
     }

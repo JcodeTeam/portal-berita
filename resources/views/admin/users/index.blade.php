@@ -28,10 +28,10 @@
                 </thead>
                 <tbody>
                     @forelse ($users as $index => $user)
+                        @continue($user->id === auth()->id())
                         <tr>
-                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>
-
                                 @if ($user->avatar)
                                     @if (Str::startsWith($user->avatar, ['http://', 'https://']))
                                         <img src="{{ $user->avatar }}" width="40" height="40"

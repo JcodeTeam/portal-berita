@@ -11,7 +11,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi bi-people-fill me-2"></i>Total Users</h5>
-                    <p class="fs-3 fw-bold">128</p>
+                    <p class="fs-3 fw-bold">{{ $totalUsers }}</p>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi bi-shield-lock-fill me-2"></i>Total Roles</h5>
-                    <p class="fs-3 fw-bold">5</p>
+                    <p class="fs-3 fw-bold">{{ $totalRoles }}</p>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title"><i class="bi bi-folder-fill me-2"></i>News Categories</h5>
-                    <p class="fs-3 fw-bold">12</p>
+                    <p class="fs-3 fw-bold">{{ $totalCategories }}</p>
                 </div>
             </div>
         </div>

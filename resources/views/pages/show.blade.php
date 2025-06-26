@@ -26,7 +26,7 @@
                                     class="rounded-circle me-2 border border-2 border-light shadow-sm" width="40"
                                     height="40" style="object-fit: cover;">
                             @else
-                                <img src="{{ asset('storage/profiles/' . $news->author->user->avatar) }}"
+                                <img src="{{ asset('storage/public/profiles/' . $news->author->user->avatar) }}"
                                     class="rounded-circle me-2 border border-2 border-light shadow-sm" width="40"
                                     height="40" style="object-fit: cover;">
                             @endif

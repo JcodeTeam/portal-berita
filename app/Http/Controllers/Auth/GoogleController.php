@@ -21,28 +21,27 @@ class GoogleController extends Controller
         try {
             $googleUser = Socialite::driver('google')->user();
 
-        $user = User::where('email', $googleUser->getEmail())->first();
+            $user = User::where('email', $googleUser->getEmail())->first();
 
-        if ($user) {
-            // Jika user sudah ada, perbarui google_id jika belum tersimpan
-            if (!$user->google_id) {
-                $user->update([
-                    'google_id' => $googleUser->getId(),
-                    'avatar'    => $googleUser->getAvatar(),
+            if ($user) {
+                // Jika user sudah ada, perbarui google_id jika belum tersimpan
+                $user->google_id = $googleUser->getId();
+                $user->avatar    = $googleUser->getAvatar();
+
+                $user->save();
+                
+            } else {
+                // Jika user belum ada, buat baru
+                $user = User::create([
+                    'name'              => $googleUser->getName(),
+                    'email'             => $googleUser->getEmail(),
+                    'google_id'         => $googleUser->getId(),
+                    'avatar'            => $googleUser->getAvatar(),
+                    'password'          => bcrypt(uniqid()),
+                    'email_verified_at' => null,
+                    'role_id' => 3,
                 ]);
             }
-        } else {
-            // Jika user belum ada, buat baru
-            $user = User::create([
-                'name'              => $googleUser->getName(),
-                'email'             => $googleUser->getEmail(),
-                'google_id'         => $googleUser->getId(),
-                'avatar'            => $googleUser->getAvatar(),
-                'password'          => bcrypt(uniqid()),
-                'email_verified_at' => null,
-                'role_id' => 3,
-            ]);
-        }
 
             Auth::login($user);
 

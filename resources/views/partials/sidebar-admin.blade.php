@@ -36,7 +36,7 @@
     @endphp
 
     <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
+        <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle"
             id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
 
             @if ($avatar)
@@ -57,7 +57,7 @@
             <strong>{{ Auth::user()->name }}</strong>
         </a>
         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="{{ route('profile.show') }}">Settings</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>

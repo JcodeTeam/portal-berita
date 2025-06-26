@@ -39,7 +39,7 @@
             <div class="card-body p-3">
                 <a href="{{ route('profile.edit') }}"
                     class="text-decoration-none text-primary fw-semibold d-block mb-2">Ubah Profil</a>
-                <a href="#" class="text-decoration-none text-primary fw-semibold d-block">Ganti Password</a>
+                <a href="{{ route('password.form') }}" class="text-decoration-none text-primary fw-semibold d-block">Ganti Password</a>
             </div>
         </div>
 

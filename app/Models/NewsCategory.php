@@ -11,7 +11,7 @@ class NewsCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'title',
         'slug',
     ];
 

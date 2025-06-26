@@ -19,7 +19,6 @@
                             @method('PUT')
                     @endif
 
-                    {{-- Foto Profil --}}
                     <div class="mb-3 text-center">
                         <div class="rounded-circle bg-secondary text-white d-inline-flex justify-content-center align-items-center" style="width: 80px; height: 80px; font-size: 32px;">
                             @if ($user->avatar)

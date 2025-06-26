@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
+    Route::get('/profile/password', [ProfileController::class, 'showPasswordForm'])->name('password.form');
+    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+
 });
 
 Route::middleware([AdminMiddleware::class])->group(function () {
@@ -67,3 +70,7 @@ Route::get('/berita', [PublicNewsController::class, 'index'])->name('berita.inde
 Route::get('/berita/{year}/{month}/{day}/{news_id}/{slug}', [PublicNewsController::class, 'show'])->name('berita.show');
 
 Route::get('/author/{author:username}', [AuthorController::class, 'show'])->name('author.username');
+
+Route::get('/berita/category/{slug}', [PublicNewsController::class, 'category'])->name('berita.category');
+
+Route::get('/berita/search', [PublicNewsController::class, 'search'])->name('berita.search');

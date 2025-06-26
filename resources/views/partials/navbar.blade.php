@@ -10,17 +10,23 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <!-- Menu -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-4">
-                <li class="nav-item"><a class="nav-link active" href="#">Beranda</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Kesehatan</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Politik</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Pariwisata</a></li>
+                @foreach ($categories as $cat)
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('/berita/category/' . $cat->slug) ? 'active' : '' }}"
+                            href="{{ route('berita.category', $cat->slug) }}">
+                            {{ $cat->title }}
+                        </a>
+                    </li>
+                @endforeach
+
             </ul>
 
             <!-- Search -->
-            <form class="d-flex me-3" role="search">
-                <input class="form-control rounded-pill px-3" type="search" placeholder="Cari berita..."
-                    aria-label="Search">
+            <form class="d-flex me-3" role="search" action="{{ route('berita.search') }}" method="GET">
+                <input class="form-control rounded-pill px-3" type="search" name="q" placeholder="Cari berita..."
+                    aria-label="Search" required>
             </form>
+
 
             <!-- Autentikasi -->
             @php

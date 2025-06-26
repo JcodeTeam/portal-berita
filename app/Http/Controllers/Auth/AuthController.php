@@ -48,11 +48,11 @@ class AuthController extends Controller
 
             switch ($user->role_id) {
                 case 1: // Admin
-                    return redirect()->route('admin.dashboard')->with('success', 'Login berhasil!');
+                    return redirect()->route('admin.dashboard');
                 case 2: // Redaksi
-                    return redirect()->route('redaksi.index')->with('success', 'Login berhasil!');
+                    return redirect()->route('redaksi.index');
                 default:
-                    return redirect()->intended('/')->with('success', 'Login berhasil!');
+                    return redirect()->intended('/');
             }
         }
 

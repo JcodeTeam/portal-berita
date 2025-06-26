@@ -23,13 +23,15 @@ class NewsCategoryController extends Controller
     // Simpan kategori baru
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validated = $request->validate([
             'title' => 'required|string|max:255',
         ]);
-        
-        $data['slug'] = Str::slug($data['title']);
 
-        NewsCategory::create($data);
+        NewsCategory::create([
+            'title' => $validated['title'],
+            'slug' => Str::slug($validated['title']),
+        ]);
+
 
         return redirect()
             ->route('news_categories.index')
