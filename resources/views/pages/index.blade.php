@@ -57,7 +57,7 @@
                                         class="img-fluid rounded mb-2" style="height: 180px; object-fit: cover;">
                                 @endif
 
-                                <h6 class="fw-bold mb-1" style="line-height: 1.4;">
+                                <h6 class="fw-bold mb-1 hover-title" style="line-height: 1.4;">
                                     {{ $post->title }}
                                 </h6>
 

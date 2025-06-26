@@ -24,6 +24,7 @@
                         <tr>
                             <th scope="col">Gambar</th>
                             <th scope="col">Judul</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Kategori</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col" class="text-center">Aksi</th>
@@ -41,6 +42,13 @@
                                     @endif
                                 </td>
                                 <td>{{ $news->title }}</td>
+                                <td>
+                                    @if ($news->is_published == 1)
+                                        <span class="badge bg-success">Published</span>
+                                    @else
+                                        <span class="badge bg-secondary">Draft</span>
+                                    @endif
+                                </td>
                                 <td>{{ $news->category->title ?? '-' }}</td>
                                 <td>{{ $news->created_at->format('d M Y') }}</td>
                                 <td class="text-center">

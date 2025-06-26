@@ -16,6 +16,17 @@
     <title>@yield('title', 'Portal Berita')</title>
 </head>
 
+<style>
+    .hover-title {
+        transition: color 0.3s ease;
+    }
+
+    a:hover .hover-title {
+        color: #0d6efd;
+    }
+    
+</style>
+
 <body>
 
 
@@ -29,6 +40,8 @@
             <div style="margin-top: 72px;"">
                 @yield('content')
             </div>
+
+            @include('partials.footer')
         </div>
     </div>
 

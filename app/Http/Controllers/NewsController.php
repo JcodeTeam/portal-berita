@@ -49,10 +49,13 @@ class NewsController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:news,title',
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:news_categories,id',
+        ],
+        [
+            'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
         ]);
 
         $author = $request->user()->author;
@@ -75,6 +78,7 @@ class NewsController extends Controller
             'image'       => $image->hashName(),
             'author_id'   => $author->id,
             'category_id' => $request->category_id,
+            'is_published' => $request->boolean('is_published'),
         ]);
 
         return redirect()->route('redaksi.index')->with('success', 'Berita berhasil ditambahkan.');
@@ -108,11 +112,14 @@ class NewsController extends Controller
 
         // Validate input
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:news,title',
             'content' => 'required|string',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category_id' => 'required|exists:news_categories,id',
             'is_published' => 'sometimes|boolean',
+        ],
+        [
+            'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
         ]);
 
         // Prepare data for update

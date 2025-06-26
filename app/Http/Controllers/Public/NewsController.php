@@ -35,7 +35,14 @@ class NewsController extends Controller
 
         $categories = NewsCategory::orderBy('title')->get();
 
-        return view('pages.show', compact('news', 'categories'));
+        $otherPosts = News::where('id', '!=', $news->id)
+            ->where('is_published', true)
+            ->with('category')
+            ->latest()
+            ->limit(20)
+            ->get();
+
+        return view('pages.show', compact('news', 'categories', 'otherPosts'));
     }
 
     public function category($slug)
