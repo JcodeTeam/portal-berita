@@ -5,8 +5,8 @@
 @section('content')
     <div class="container py-4" style="max-width: 540px;">
         <div class="mb-3 d-flex align-items-center">
-            {{-- <a href="{{ url()->previous() }}" class="me-3 text-dark"> --}}
-            <a href="{{ route('berita.index') }}" class="me-3 text-dark">
+            <a href="{{ url()->previous() }}" class="me-3 text-dark">
+            {{-- <a href="{{ route('berita.index') }}" class="me-3 text-dark"> --}}
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h5 class="mb-0 fw-semibold">Profil Saya</h5>

@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use Illuminate\Support\Str;
 use App\Models\NewsCategory;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 
@@ -48,15 +49,17 @@ class NewsController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
-            'title' => 'required|string|max:255|unique:news,title',
-            'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category_id' => 'required|exists:news_categories,id',
-        ],
-        [
-            'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
-        ]);
+        $request->validate(
+            [
+                'title' => 'required|string|max:255|unique:news,title',
+                'content' => 'required|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'category_id' => 'required|exists:news_categories,id',
+            ],
+            [
+                'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
+            ]
+        );
 
         $author = $request->user()->author;
 
@@ -111,16 +114,23 @@ class NewsController extends Controller
         $news = News::where('news_id', $news_id)->firstOrFail();
 
         // Validate input
-        $request->validate([
-            'title' => 'required|string|max:255|unique:news,title',
-            'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category_id' => 'required|exists:news_categories,id',
-            'is_published' => 'sometimes|boolean',
-        ],
-        [
-            'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
-        ]);
+        $request->validate(
+            [
+                'title' => [
+                    'required',
+                    'string',
+                    'max:255',
+                    Rule::unique('news', 'title')->ignore($news->id),
+                ],
+                'content' => 'required|string',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'category_id' => 'required|exists:news_categories,id',
+                'is_published' => 'sometimes|boolean',
+            ],
+            [
+                'title.unique' => 'Judul sudah digunakan. Silakan gunakan judul lain.',
+            ]
+        );
 
         // Prepare data for update
         $data = [
