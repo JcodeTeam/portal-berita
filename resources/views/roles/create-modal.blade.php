@@ -12,10 +12,11 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Peran</label>
-                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                               id="name" name="name" value="{{ old('name') }}" required>
+
+                        <input type="text" name="name" id="name"
+                            class="form-control @error('name') border-danger @enderror" value="{{ old('name') }}">
                         @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="text-danger small mt-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
