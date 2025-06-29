@@ -11,7 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/mdb-ui-kit/css/mdb.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    {{-- <link rel="icon" href="{{ asset('notes.png') }}"> --}}
+    <link rel="icon" href="{{ asset('storage/public/img/cndws.jpg') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <title>@yield('title', 'Portal Berita')</title>
 </head>
@@ -24,7 +24,7 @@
     a:hover .hover-title {
         color: #0d6efd;
     }
-    
+
 </style>
 
 <body>

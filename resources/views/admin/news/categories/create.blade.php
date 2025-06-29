@@ -1,18 +1,28 @@
-@extends('layouts.admin')
-@section('title','Tambah Kategori')
-@section('content')
-<div class="container my-4">
-  <h2>Tambah Kategori Berita</h2>
-  <form action="{{ route('news_categories.store') }}" method="POST">
-    @csrf
-    <div class="mb-3">
-      <label class="form-label">Title</label>
-      <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-             value="{{ old('title') }}">
-      @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+<div class="modal fade" id="tambahKategoriModal" tabindex="-1" aria-labelledby="tambahKategoriModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ route('news_categories.store') }}" method="POST">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="tambahKategoriModalLabel">Tambah Kategori Berita</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Judul</label>
+                        <input type="text" name="title" id="title"
+                            class="form-control @error('title') is-invalid @enderror" value="{{ old('title') }}">
+                        @error('title')
+                            <div class="invalid-feedback text-danger small mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Simpan</button>
-    <a href="{{ route('news_categories.index') }}" class="btn btn-secondary ms-2">Batal</a>
-  </form>
 </div>
-@endsection

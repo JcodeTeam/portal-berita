@@ -49,7 +49,7 @@
             @endif
 
             <div class="mb-3">
-                <label for="image" class="form-label">Ganti Gambar (opsional)</label>
+                <label for="image" class="form-label">Ganti Gambar</label>
                 <input type="file" name="image" id="image"
                     class="form-control @error('image') border-danger @enderror" accept="image/*">
                 @error('image')
@@ -59,12 +59,12 @@
 
             <div class="mb-3">
                 <label for="content" class="form-label">Konten</label>
-                <textarea name="content" id="content" rows="8" class="form-control @error('content') border-danger @enderror"
-                    required>{{ old('content', $redaksi->content) }}</textarea>
+                <textarea name="content" id="content" rows="8" class="form-control @error('content') border-danger @enderror">{{ old('content', $redaksi->content) }}</textarea>
                 @error('content')
                     <div class="text-danger small mt-1">{{ $message }}</div>
                 @enderror
             </div>
+
 
             <input type="hidden" name="is_published" value="0">
             <div class="form-check mb-4">
@@ -77,4 +77,9 @@
             <a href="{{ route('redaksi.index') }}" class="btn btn-secondary ms-2">Batal</a>
         </form>
     </div>
+
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script>
+        CKEDITOR.replace('content');
+    </script>
 @endsection

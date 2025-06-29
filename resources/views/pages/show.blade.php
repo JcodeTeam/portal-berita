@@ -85,8 +85,10 @@
 
             <div class="col-md-8">
 
-                <article class="fs-5" style="line-height: 1.8;">
-                    {!! nl2br(e($news->content)) !!}
+                <article class="fs-5" style="line-height: 1.8; white-space: normal;">
+                    {!! str_replace('&nbsp;', ' ', $news->content) !!}
+                    {{-- {!! str_replace(' ', '&nbsp;', $news->content) !!} --}}
+                     {{-- {!! nl2br(e($news->content)) !!} --}}
                 </article>
 
                 <div class="col-md-2"></div>
@@ -121,7 +123,5 @@
                 @endforeach
             </div>
         </div>
-
-
 
     @endsection

@@ -4,7 +4,10 @@
     <div class="container my-4">
         <div class="d-flex justify-content-between mb-3">
             <h2>Kategori Berita</h2>
-            <a href="{{ route('news_categories.create') }}" class="btn btn-primary">Tambah Kategori</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahKategoriModal">
+                <i class="bi bi-plus-circle"></i> Tambah Kategori
+            </button>
+
         </div>
 
         @if (session('success'))
@@ -33,7 +36,7 @@
                             </button>
 
                             <form action="{{ route('news_categories.destroy', $cat->id) }}" method="POST"
-                                onsubmit="return confirm('Hapus kategori ini?')">
+                                onsubmit="return confirmDelete(event, this);">
                                 @csrf @method('DELETE')
                                 <button class="btn btn-sm btn-danger">Hapus</button>
                             </form>
@@ -51,4 +54,5 @@
 
         {{ $categories->links() }}
     </div>
+    @include('admin.news.categories.create')
 @endsection

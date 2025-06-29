@@ -27,7 +27,8 @@
                                     class="form-select @error('role_id') is-invalid @enderror" required>
                                     <option value="">-- Pilih Role --</option>
                                     @foreach ($roles as $role)
-                                        <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
+                                        <option value="{{ $role->id }}"
+                                            {{ $user->role_id == $role->id ? 'selected' : '' }}>
                                             {{ ucfirst($role->name) }}
                                         </option>
                                     @endforeach
@@ -40,8 +41,7 @@
                             {{-- Nama --}}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
-                                <input type="text" name="name" id="name"
-                                    value="{{ old('name', $user->name) }}"
+                                <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}"
                                     class="form-control @error('name') is-invalid @enderror" required>
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -51,8 +51,7 @@
                             {{-- Email --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="email" name="email" id="email"
-                                    value="{{ old('email', $user->email) }}"
+                                <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}"
                                     class="form-control @error('email') is-invalid @enderror" required>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -62,7 +61,7 @@
                             {{-- Password --}}
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password Baru
-                                    <small class="text-muted">(Opsional, min. 8 karakter)</small></label>
+                                </label>
                                 <input type="password" name="password" id="password"
                                     class="form-control @error('password') is-invalid @enderror">
                                 @error('password')

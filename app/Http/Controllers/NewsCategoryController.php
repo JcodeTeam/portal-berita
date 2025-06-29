@@ -23,9 +23,14 @@ class NewsCategoryController extends Controller
     // Simpan kategori baru
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-        ]);
+        $validated = $request->validate(
+            [
+                'title' => 'required|string|max:255|unique:news_categories,slug',
+            ],
+            [
+                'title.unique' => 'Category sudah ada, silakan ganti'
+            ]
+        );
 
         NewsCategory::create([
             'title' => $validated['title'],

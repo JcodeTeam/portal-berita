@@ -52,19 +52,23 @@
                                 <td>{{ $news->category->title ?? '-' }}</td>
                                 <td>{{ $news->created_at->format('d M Y') }}</td>
                                 <td class="text-center">
-                                    <a href="{{ route('redaksi.edit', $news->news_id) }}" class="btn btn-sm btn-primary">
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    <form action="{{ route('redaksi.destroy', $news->news_id) }}" method="POST"
-                                        style="display:inline;">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-sm btn-danger"
-                                            onclick="return confirm('Yakin ingin menghapus berita ini?')">
-                                            <i class="bi bi-trash"></i>
-                                        </button>
-                                    </form>
+                                    <div class="d-inline-flex gap-1">
+                                        <a href="{{ route('redaksi.edit', $news->news_id) }}"
+                                            class="btn btn-sm btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+
+                                        <form action="{{ route('redaksi.destroy', $news->news_id) }}" method="POST"
+                                            onsubmit="return confirmDelete(event, this);" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-sm btn-danger">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </form>
+                                    </div>
                                 </td>
+
                             </tr>
                         @endforeach
                     </tbody>
