@@ -20,7 +20,6 @@
                             @csrf
                             @method('PUT')
 
-                            {{-- Role --}}
                             <div class="mb-3">
                                 <label for="role_id" class="form-label">Role</label>
                                 <select name="role_id" id="role_id"
@@ -38,7 +37,6 @@
                                 @enderror
                             </div>
 
-                            {{-- Nama --}}
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
                                 <input type="text" name="name" id="name" value="{{ old('name', $user->name) }}"
@@ -48,7 +46,6 @@
                                 @enderror
                             </div>
 
-                            {{-- Email --}}
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" id="email" value="{{ old('email', $user->email) }}"
@@ -58,7 +55,6 @@
                                 @enderror
                             </div>
 
-                            {{-- Password --}}
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password Baru
                                 </label>
@@ -69,7 +65,6 @@
                                 @enderror
                             </div>
 
-                            {{-- Konfirmasi Password --}}
                             <div class="mb-3">
                                 <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
@@ -106,7 +101,6 @@
                                 </div>
                             </div>
 
-                            {{-- Tombol --}}
                             <div class="d-flex justify-content-between mt-4">
                                 <a href="{{ route('users.index') }}" class="btn btn-outline-secondary">
                                     <i class="bi bi-arrow-left me-1"></i> Batal

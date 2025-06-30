@@ -14,13 +14,11 @@ class NewsCategoryController extends Controller
         return view('admin.news.categories.index', compact('categories'));
     }
 
-    // Form tambah kategori
     public function create()
     {
         return view('admin.news.categories.create');
     }
 
-    // Simpan kategori baru
     public function store(Request $request)
     {
         $validated = $request->validate(
@@ -43,21 +41,18 @@ class NewsCategoryController extends Controller
             ->with('success', 'Kategori berhasil dibuat.');
     }
 
-    // Tampilkan detail kategori
     public function show($id)
     {
         $category = NewsCategory::findOrFail($id);
         return view('admin.news.categories.show', compact('category'));
     }
 
-    // Form edit kategori
     public function edit($id)
     {
         $category = NewsCategory::findOrFail($id);
         return view('admin.news.categories.edit', compact('category'));
     }
 
-    // Update kategori
     public function update(Request $request, $id)
     {
         $category = NewsCategory::findOrFail($id);
@@ -74,7 +69,6 @@ class NewsCategoryController extends Controller
             ->with('success', 'Kategori berhasil diperbarui.');
     }
 
-    // Hapus kategori
     public function destroy($id)
     {
         $category = NewsCategory::findOrFail($id);
